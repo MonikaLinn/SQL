@@ -1,0 +1,17 @@
+ALTER TABLE VISITS
+ADD FOREIGN KEY (patientID) 
+REFERENCES Patients (patientID)
+ON UPDATE CASCADE
+ON DELETE CASCADE;
+
+ALTER TABLE VISITS 
+ADD FOREIGN KEY (dentistID) 
+REFERENCES Dentists (dentistID)
+ON UPDATE CASCADE
+ON DELETE RESTRICT;
+
+ALTER TABLE TreatmentsDuringVisits
+ADD FOREIGN KEY (patientID, dentistID, visitStartTimestamp) 
+REFERENCES Visits (patientID, dentistID, visitStartTimestamp)
+ON UPDATE CASCADE
+ON DELETE CASCADE;
